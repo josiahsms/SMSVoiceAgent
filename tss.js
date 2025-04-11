@@ -7,12 +7,8 @@ document.getElementById("speak-btn").addEventListener("click", async () => {
   });
 
   const blob = await response.blob();
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "speech.zip";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const audioUrl = URL.createObjectURL(blob);
+  const audio = document.getElementById("audio");
+  audio.src = audioUrl;
+  audio.play();
 });
