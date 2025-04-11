@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Make the POST request to save pronunciation
     const res = await fetch("/api/pronunciations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -15,6 +17,7 @@ export default function Home() {
     });
 
     const data = await res.json();
+
     if (res.ok) {
       setMessage(`Saved: "${word}" will be pronounced "${sayAs}"`);
       setWord("");
